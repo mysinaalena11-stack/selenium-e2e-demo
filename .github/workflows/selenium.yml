@@ -38,3 +38,9 @@ jobs:
     - name: Run Selenium tests
       run: |
         python -m pytest tests/ -v --html=selenium-report.html --self-contained-html
+        - name: Upload test report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: selenium-test-report
+        path: selenium-report.html
